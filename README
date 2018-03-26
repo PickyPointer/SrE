@@ -1,1 +1,4 @@
 SrE Readme
+git remote add origin https://github.com/PickyPointer/SrE.git
+git push origin master
+git pull origin master
