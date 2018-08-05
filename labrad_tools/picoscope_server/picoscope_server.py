@@ -40,43 +40,27 @@ class PicoscopeServer(HardwareInterfaceServer):
     name = '%LABRADNODE%_picoscope'
     
     def refresh_available_interfaces(self):
+
         ps = ps3000a.PS3000a(connect=False)
         ps2 = ps5000a.PS5000a(connect=False)
-
-        #Load file with serial numbers 
-        snFile = open('serialNums','r')
-        snDicts = eval(snFile.read())
-        #load picoscopes into two arrays indicating type of picoscope and serial number
+        
         try:
-            serial_numbers = []
-            ps_type = []
-            for key in snDicts.keys():
-                serial_numbers = serial_numbers + snDicts.get(key)
-                for n in range(len(snDicts.get(key))):
-                    ps_type = ps_type + [key]
+            serial_numbers = ps.enumerateUnits()
         except:
             serial_numbers = []
-            ps_type = []
+        try:
+            serial_numbers2 = serial_numbers + ps2.enumerateUnits()
+        except:
+            serial_numbers2 = []
         
         additions = set(serial_numbers) - set(self.interfaces.keys())
-        #Iterate over all picoscopes and establish connection with computer
-        #pico-python has seperate classes for connecting to different types of picoscopes.
-        for sn,scope in zip(additions,ps_type):
-            if scope == "ps3000":
-                try:
-                    inst = ps3000a.PS3000a(sn)
-                    self.interfaces[sn] = inst
-                except:
-                    print "Picoscope 3000 with SN %s not loaded\n"%sn
-                    pass
-                    #Do nothing if picoscope isnt plugged in
-            elif scope == "ps5000":
-                try:
-                    inst = ps5000a.PS5000a(sn)
-                    self.interfaces[sn] = inst
-                except:     
-                    print "Picoscope 5000 with SN %s not loaded\n"%sn
-                    pass
+        additions2 = set(serial_numbers2) - set(self.interfaces.keys())
+        for sn in additions:
+            inst = ps3000a.PS3000a(sn)
+            self.interfaces[sn] = inst
+        for sn in additions2:
+            inst = ps5000a.PS5000a(sn)
+            self.interfaces[sn] = inst
 
         ps.close()
         ps2.close()
@@ -180,6 +164,21 @@ class PicoscopeServer(HardwareInterfaceServer):
                 response[channel][label] =  ps.getDataV(channel, 50000, segmentIndex=i)
 
         returnValue(json.dumps(response, default=lambda x: x.tolist()))
+
+    #Flash LED.  Useful as a sanity check.
+    @setting(11, n_flashes='i')
+    def flash_led(self, c, n_flashes):
+        ps = self.get_interface(c)
+        ps.flashLed(n_flashes)
+
+    #Set ADC resolution (Only does something for 5000 class picoscope)
+    #Options are "8", "12", "14", "15", "16" input as a string. 
+    #For 16 bit operation the picoscope can only use 1 input channel
+    #For 15 bit operation, the picoscope can only use 2 input channels
+    @setting(12, resolution='s')
+    def set_resolution(self, c, resolution):
+        ps = self.get_interface(c)
+        ps.setResolution(resolution)
 
 __server__ = PicoscopeServer()
 
