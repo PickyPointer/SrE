@@ -1,0 +1,14 @@
+{
+    "data_directory": "./data/{}/",
+    "parameters_directory": "./parameters/",
+    "time_format": "%Y%m%d",
+    "registry_directory": ["", "Servers", "conductor", "parameters"],
+    "default_parameters": {
+        "sequencer": {
+            "sequence": {
+                "sequence_directory": "../sequencer/sequences/{}/",
+                "default_sequence": "all_off"
+            }
+	}
+    }
+}
