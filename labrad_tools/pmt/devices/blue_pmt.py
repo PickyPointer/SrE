@@ -24,13 +24,13 @@ def fit_function(x, a):
 
 class BluePMT(Picoscope):
     autostart = False
-    picoscope_server_name = 'yesr10_picoscope'
-    picoscope_serial_number = 'DU009/008'
+    picoscope_server_name = 'yeelmo_picoscope'
+    picoscope_serial_number = 'DY149/147'
     picoscope_duration = 2e-3
     picoscope_frequency = 100e6
     picoscope_n_capture = 3
     picoscope_trigger_threshold = 2 # [V]
-    picoscope_timeout = -1 # [ms]
+    picoscope_timeout = 30000 # [ms]
 
     picoscope_channel_settings = {
         'A': {

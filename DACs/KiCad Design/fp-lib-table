@@ -1,0 +1,3 @@
+(fp_lib_table
+  (lib (name KiCad_DAC_Specific)(type KiCad)(uri "$(KIPRJMOD)\\KiCad Custom Footprints\\KiCad_DAC_Specific.pretty")(options "")(descr ""))
+)

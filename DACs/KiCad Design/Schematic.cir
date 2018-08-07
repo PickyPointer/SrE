@@ -1,0 +1,108 @@
+* C:\Users\jas24\OneDrive\Ye Group\DACs\Schematic\Schematic.cir
+
+* EESchema Netlist Version 1.1 (Spice format) creation date: 2/22/2017 6:58:07 PM
+
+* To exclude a component from the Spice Netlist add [Spice_Netlist_Enabled] user FIELD set to: N
+* To reorder the component spice node sequence add [Spice_Node_Sequence] user FIELD and define sequence: 2,1,0
+
+* Sheet Name: /
+C77  GNDA +15V 0.1uF		
+C70  GNDA -15V 0.1uF		
+U21  Net-_U18-Pad4_ Net-_U18-Pad3_ +10Vref -15V -10Vref Net-_U18-Pad17_ Net-_U18-Pad16_ +15V AD8676		
+U19  Net-_U19-Pad1_ Net-_U19-Pad2_ Net-_U18-Pad3_ Net-_U18-Pad4_ +15V ? ? ? +3V3 +3V3 ? ? ? ? GNDA Net-_U18-Pad16_ Net-_U18-Pad17_ -15V GNDA Vout8 AD5781		
+C74  GNDA -15V 0.1uF		
+C73  GNDA -15V 10uF		
+C62  +3V3 GNDA 10uF		
+C63  GNDA +3V3 0.1uF		
+C65  +15V GNDA 10uF		
+C66  GNDA +15V 0.1uF		
+U20  ? Net-_U19-Pad1_ Net-_U19-Pad2_ -15V ? Vout8 +15V ? AD8657		
+C75  +15V GNDA 0.1uF		
+U11  ? +15V ? ? ? +10Vref Net-_C38-Pad2_ -10Vref GNDA ? ? ? ? ? ? -15V AD688		
+C38  GNDA Net-_C38-Pad2_ 1uF		
+C37  GNDA +15V 0.1uF		
+C35  +15V GNDA 10uF		
+C45  GNDA -15V 0.1uF		
+C51  GNDA -15V 10uF		
+C67  -15V GNDA 0.1uF		
+U18  Net-_U17-Pad2_ Net-_U17-Pad3_ Net-_U18-Pad3_ Net-_U18-Pad4_ +15V ? ? ? +3V3 +3V3 ? ? ? ? GNDA Net-_U18-Pad16_ Net-_U18-Pad17_ -15V GNDA Vout7 AD5781		
+C72  GNDA -15V 0.1uF		
+C71  GNDA -15V 10uF		
+C60  +3V3 GNDA 10uF		
+C61  GNDA +3V3 0.1uF		
+U17  ? Net-_U17-Pad2_ Net-_U17-Pad3_ -15V ? Vout7 +15V ? AD8657		
+C76  +15V GNDA 0.1uF		
+C64  -15V GNDA 0.1uF		
+C68  +15V GNDA 10uF		
+C69  +15V GNDA 0.1uF		
+C59  GNDA +15V 0.1uF		
+C52  GNDA -15V 0.1uF		
+U16  Net-_U13-Pad4_ Net-_U13-Pad3_ +10Vref -15V -10Vref Net-_U13-Pad17_ Net-_U13-Pad16_ +15V AD8676		
+U14  Net-_U14-Pad1_ Net-_U14-Pad2_ Net-_U13-Pad3_ Net-_U13-Pad4_ +15V ? ? ? +3V3 +3V3 ? ? ? ? GNDA Net-_U13-Pad16_ Net-_U13-Pad17_ -15V GNDA Vout6 AD5781		
+C56  GNDA -15V 0.1uF		
+C55  GNDA -15V 10uF		
+C42  +3V3 GNDA 10uF		
+C43  GNDA +3V3 0.1uF		
+C46  +15V GNDA 10uF		
+C47  GNDA +15V 0.1uF		
+U15  ? Net-_U14-Pad1_ Net-_U14-Pad2_ -15V ? Vout6 +15V ? AD8657		
+C57  +15V GNDA 0.1uF		
+C48  -15V GNDA 0.1uF		
+U13  Net-_U12-Pad2_ Net-_U12-Pad3_ Net-_U13-Pad3_ Net-_U13-Pad4_ +15V ? ? ? +3V3 +3V3 ? ? ? ? GNDA Net-_U13-Pad16_ Net-_U13-Pad17_ -15V GNDA Vout5 AD5781		
+C54  GNDA -15V 0.1uF		
+C53  GNDA -15V 10uF		
+C40  +3V3 GNDA 10uF		
+C41  GNDA +3V3 0.1uF		
+U12  ? Net-_U12-Pad2_ Net-_U12-Pad3_ -15V ? Vout5 +15V ? AD8657		
+C58  +15V GNDA 0.1uF		
+C44  -15V GNDA 0.1uF		
+C49  +15V GNDA 10uF		
+C50  +15V GNDA 0.1uF		
+C39  GNDA +15V 0.1uF		
+C29  GNDA -15V 0.1uF		
+U10  Net-_U10-Pad1_ Net-_U10-Pad2_ +10Vref -15V -10Vref Net-_U10-Pad6_ Net-_U10-Pad7_ +15V AD8676		
+U8  Net-_U8-Pad1_ Net-_U8-Pad2_ Net-_U10-Pad2_ Net-_U10-Pad1_ +15V ? ? ? +3V3 +3V3 ? ? ? ? GNDA Net-_U10-Pad7_ Net-_U10-Pad6_ -15V GNDA Vout4 AD5781		
+C33  GNDA -15V 0.1uF		
+C32  GNDA -15V 10uF		
+C21  +3V3 GNDA 10uF		
+C22  GNDA +3V3 0.1uF		
+C24  +15V GNDA 10uF		
+C25  GNDA +15V 0.1uF		
+U9  ? Net-_U8-Pad1_ Net-_U8-Pad2_ -15V ? Vout4 +15V ? AD8657		
+C34  +15V GNDA 0.1uF		
+C26  -15V GNDA 0.1uF		
+U7  Net-_U6-Pad2_ Net-_U6-Pad3_ Net-_U10-Pad2_ Net-_U10-Pad1_ +15V ? ? ? +3V3 +3V3 ? ? ? ? GNDA Net-_U10-Pad7_ Net-_U10-Pad6_ -15V GNDA Vout3 AD5781		
+C31  GNDA -15V 0.1uF		
+C30  GNDA -15V 10uF		
+C19  +3V3 GNDA 10uF		
+C20  GNDA +3V3 0.1uF		
+U6  ? Net-_U6-Pad2_ Net-_U6-Pad3_ -15V ? Vout3 +15V ? AD8657		
+C36  +15V GNDA 0.1uF		
+C23  -15V GNDA 0.1uF		
+C27  +15V GNDA 10uF		
+C28  +15V GNDA 0.1uF		
+C18  GNDA +15V 0.1uF		
+C11  GNDA -15V 0.1uF		
+U5  Net-_U2-Pad4_ Net-_U2-Pad3_ +10Vref -15V -10Vref Net-_U2-Pad17_ Net-_U2-Pad16_ +15V AD8676		
+U3  Net-_U3-Pad1_ Net-_U3-Pad2_ Net-_U2-Pad3_ Net-_U2-Pad4_ +15V ? ? ? +3V3 +3V3 ? ? ? ? GNDA Net-_U2-Pad16_ Net-_U2-Pad17_ -15V GNDA Vout2 AD5781		
+C15  GNDA -15V 0.1uF		
+C14  GNDA -15V 10uF		
+C3  +3V3 GNDA 10uF		
+C4  GNDA +3V3 0.1uF		
+C6  +15V GNDA 10uF		
+C7  GNDA +15V 0.1uF		
+U4  ? Net-_U3-Pad1_ Net-_U3-Pad2_ -15V ? Vout2 +15V ? AD8657		
+C16  +15V GNDA 0.1uF		
+C8  -15V GNDA 0.1uF		
+U2  Net-_U1-Pad2_ Net-_U1-Pad3_ Net-_U2-Pad3_ Net-_U2-Pad4_ +15V ? ? ? +3V3 +3V3 ? ? ? ? GNDA Net-_U2-Pad16_ Net-_U2-Pad17_ -15V GNDA Vout1 AD5781		
+C13  GNDA -15V 0.1uF		
+C12  GNDA -15V 10uF		
+C1  +3V3 GNDA 10uF		
+C2  GNDA +3V3 0.1uF		
+U1  ? Net-_U1-Pad2_ Net-_U1-Pad3_ -15V ? Vout1 +15V ? AD8657		
+C17  +15V GNDA 0.1uF		
+C5  -15V GNDA 0.1uF		
+C9  +15V GNDA 10uF		
+C10  +15V GNDA 0.1uF		
+
+.end

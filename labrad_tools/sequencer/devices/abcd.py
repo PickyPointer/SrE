@@ -42,8 +42,8 @@ class BoardABCD(YeSrDigitalBoard):
         DigitalChannel(loc=['B', 14], name='Frame grabber trig', mode='auto', manual_output=False, invert=False),
         DigitalChannel(loc=['B', 15], name='TEC trig', mode='auto', manual_output=False, invert=False),
         
-        DigitalChannel(loc=['C', 0], name='689', mode='auto', manual_output=False, invert=True),
-        DigitalChannel(loc=['C', 1], name='689 modulation', mode='auto', manual_output=False, invert=True),
+        DigitalChannel(loc=['C', 0], name='689', mode='auto', manual_output=False, invert=False),
+        DigitalChannel(loc=['C', 1], name='689 modulation', mode='auto', manual_output=False, invert=False),
         DigitalChannel(loc=['C', 2], name='Polarizing AOM', mode='auto', manual_output=False, invert=False),
         DigitalChannel(loc=['C', 3], name='Polarizing shutter', mode='auto', manual_output=False, invert=False),
         DigitalChannel(loc=['C', 4], name='Killing beam laser B', mode='auto', manual_output=False, invert=False),
@@ -57,7 +57,7 @@ class BoardABCD(YeSrDigitalBoard):
         DigitalChannel(loc=['C', 12], name='Enable clock servo', mode='auto', manual_output=False, invert=False),
         DigitalChannel(loc=['C', 13], name='Zeeman intensity', mode='auto', manual_output=False, invert=False),
         DigitalChannel(loc=['C', 14], name='Clock AOM', mode='auto', manual_output=False, invert=False),
-        DigitalChannel(loc=['C', 15], name='FNC integrator', mode='auto', manual_output=False, invert=True),
+        DigitalChannel(loc=['C', 15], name='FNC integrator', mode='auto', manual_output=False, invert=False),
         
         DigitalChannel(loc=['D', 0], name='N.C. 4', mode='auto', manual_output=False, invert=False),
         DigitalChannel(loc=['D', 1], name='N.C. 5', mode='auto', manual_output=False, invert=False),

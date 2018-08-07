@@ -2,15 +2,16 @@ import json
 from twisted.internet.defer import inlineCallbacks
 import time
 import os
+import numpy as np
 
 from conductor_device.conductor_parameter import ConductorParameter
 
 class Recorder(ConductorParameter):
     priority = 2
-    data_dir = '/home/srgang/yesrdata/SrQ/new_data/{}/{}#{}/'
+    data_dir = '/media/z/SrE/Data/{}/{}#{}/'
     #data_filename = 'test_pmt-{}.json'
     data_filename = '{}.blue_pmt'
-
+    pmt_sequences = ['lattice_sb_linescan']
     @inlineCallbacks
     def initialize(self):
         yield self.connect()
@@ -26,6 +27,12 @@ class Recorder(ConductorParameter):
         
         pt_filename = self.data_filename.format(exp_pt)
         pt_path = run_dir + pt_filename
+
         
-        if exp_name:
+        sequence = self.conductor.parameters['sequencer']['sequence'].value
+        if np.intersect1d(sequence, self.pmt_sequences):
             yield self.cxn.pmt.record(pt_path)
+        else:
+            print self.pmt_sequences
+            print sequence
+            print 'pmt sequence not found'
