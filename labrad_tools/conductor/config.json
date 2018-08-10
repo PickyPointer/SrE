@@ -12,19 +12,25 @@
                 "okfpga_devicename": "Ross_ttl"
                 }
         },
-	"blue_pmt": {
-	    "recorder": {}
-            },
-	"time": {
-	    "timestamp": {}
-	    },
+		"blue_pmt": {
+		    "recorder": {}
+	            },
+		"time": {
+		    "timestamp": {}
+		    },
         "conductor_recorder": {
             "new_recorder": {
-		"data_dir": "/media/z/SrE/Data/{}/{}#{}/"
-		},
-	    "old_recorder": {
-		"local_data_dir": "/home/yelab/GitRepo/SrE/labrad_tools/conductor/.data/{}"
-        	}
-	    }
-        }
-    }
+				"data_dir": "/home/yelab/GitRepo/SrE/labrad_tools/conductor/Data/{}/{}#{}/"
+				},
+		    "old_recorder": {
+				"local_data_dir": "/home/yelab/GitRepo/SrE/labrad_tools/conductor/.data/{}"
+	        	}
+		    },
+        "clock_aom": {
+			"hr_frequency":{"dark_frequency": 57.622e6}
+			},
+		"clock_fiber_aom": {
+			"hr_demod_frequency":{"dark_frequency": 135.374e6}
+			}
+    	}
+}

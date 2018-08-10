@@ -5,16 +5,16 @@ from conductor_device.conductor_parameter import ConductorParameter
 
 class HrDemodFrequency(ConductorParameter):
     priority = 1
-    dark_frequency = 135.27e6
+    dark_frequency = 135.374e6
 #    ramp_range = 1e6
-#    dark_offset = 1e6
-    ramp_rate = 1
+    dark_offset = 1e6
+    ramp_rate = -8
 
     @inlineCallbacks
     def initialize(self):
         yield self.connect()
         yield self.cxn.rf.select_device('ad9956_0')
-        yield self.cxn.rf.linear_ramp(0, 0, self.ramp_rate)
+        yield self.cxn.rf.linear_ramp(self.dark_frequency, self.dark_frequency+self.dark_offset, self.ramp_rate)
         print 'hr_frequency init\'d with rr: {}'.format(self.ramp_rate)
     
     @inlineCallbacks

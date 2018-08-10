@@ -1,1 +1,1 @@
-{"conductor_recorder": {"new_recorder": null, "old_recorder": null}, "blue_pmt": {"recorder": null}, "sequencer": {"cycle_time": 1.0, "*dummy_parameter": 1.0, "sequence": ["all_off"]}, "time": {"timestamp": 1533630963.971478}}
+{"conductor_recorder": {"new_recorder": null, "old_recorder": null}, "sequencer": {"cycle_time": 1.129856, "*dummy_parameter": 1.0, "sequence": ["lattice_sb_linescan"]}, "time": {"timestamp": 1533704502.417553}, "clock_fiber_aom": {"hr_demod_frequency": 134974000.0}, "clock_aom": {"hr_frequency": 57222000.0}, "blue_pmt": {"recorder": null}}

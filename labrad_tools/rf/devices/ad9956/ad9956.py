@@ -57,7 +57,7 @@ class AD9956(Device):
         yield self.serial_server.timeout(self.serial_timeout)
         yield self.serial_server.baudrate(self.serial_baudrate)
 
-        yield self.set_frequency(self.default_frequency)
+        yield self.set_linear_ramp(self.default_frequency,self.default_frequency+1.0e6,-8)
 
     def make_cfr1w(self, mode):
         """ make control function register 1 word

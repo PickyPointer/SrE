@@ -16,7 +16,7 @@ from devices.picoscope.picoscope import Picoscope
 #    TAU1 = 6.5e3
 #    TAU2 = 9.5e1
 #    return a * (np.exp(-(x-T0)/TAU1) - np.exp(-(x-T0)/TAU2)) + b
-#
+5#
 
 TAU = 2.3e4
 def fit_function(x, a):
@@ -25,12 +25,14 @@ def fit_function(x, a):
 class BluePMT(Picoscope):
     autostart = False
     picoscope_server_name = 'yeelmo_picoscope'
+#    picoscope_server_name = 'yesr10_picoscope'
     picoscope_serial_number = 'DY149/147'
-    picoscope_duration = 2e-3
-    picoscope_frequency = 100e6
+#    picoscope_serial_number = 'DU009/008'
+    picoscope_duration = 5e-3
+    picoscope_frequency = 50e6
     picoscope_n_capture = 3
     picoscope_trigger_threshold = 2 # [V]
-    picoscope_timeout = 30000 # [ms]
+    picoscope_timeout = 2000 # [ms]
 
     picoscope_channel_settings = {
         'A': {
@@ -91,9 +93,15 @@ class BluePMT(Picoscope):
             raw_fits[label] = popt[0]
 
         tot_sum = raw_sums['gnd'] + raw_sums['exc'] - 2 * raw_sums['bac']
-        frac_sum = (raw_sums['exc'] - raw_sums['bac']) / tot_sum
+        try:
+            frac_sum = (raw_sums['exc'] - raw_sums['bac']) / tot_sum
+        except:
+            frac_sum = 0
         tot_fit = raw_fits['gnd'] + raw_fits['exc'] - 2 * raw_fits['bac']
-        frac_fit = (raw_fits['exc'] - raw_fits['bac']) / tot_fit
+        try:
+            frac_fit = (raw_fits['exc'] - raw_fits['bac']) / tot_fit
+        except:
+            frac_fit = 0
 
         processed_data = {
             'frac_sum': frac_sum,
@@ -107,21 +115,26 @@ class BluePMT(Picoscope):
             os.makedirs(data_directory)
     
         print "saving processed data to {}".format(data_path)
-
+        ti = time.time()
         json_path = data_path + '.json'
-        if os.path.exists(json_path):
-            print 'not saving data to {}. file already exists'.format(json_path)
-        else:
-            with open(data_path + '.json', 'w') as outfile:
-                json.dump(processed_data, outfile, default=lambda x: x.tolist())
+#        if os.path.exists(json_path):
+#            print 'not saving data to {}. file already exists'.format(json_path)
+#        else:
+        with open(data_path + '.json', 'w') as outfile:
+            json.dump(processed_data, outfile, default=lambda x: x.tolist())
         
         h5py_path = data_path + '.hdf5'
-        if os.path.exists(h5py_path):
-            print 'not saving data to {}. file already exists'.format(h5py_path)
-        else:
-            with h5py.File(h5py_path) as h5f:
-                for k, v in raw_data.items():
-                    h5f.create_dataset(k, data=np.array(v), compression='gzip')
+#        if os.path.exists(h5py_path):
+#            print 'not saving data to {}. file already exists'.format(h5py_path)
+#        else:
+#        with h5py.File(h5py_path) as h5f:
+#            for k, v in raw_data.items():
+#                h5f.create_dataset(k, data=np.array(v), compression='gzip')
+        h5f = h5py.File(h5py_path, 'w')
+        for k, v in raw_data.items():
+            h5f.create_dataset(k, data=np.array(v), compression='gzip')
+        h5f.close()
+        print "save time = %f"%(time.time()-ti)
         
         """ temporairly store data """
         if len(self.record_names) > self.max_records:

@@ -1,0 +1,1 @@
+{"conductor_recorder": {"new_recorder": null, "old_recorder": null}, "sequencer": {"cycle_time": 1.0708549999999994, "sequence": ["lattice_sb_linescan"]}, "time": {"timestamp": 1533928365.33161}, "clock_fiber_aom": {"hr_demod_frequency": 135412614.55}, "clock_aom": {"hr_frequency": 57660614.55000001}, "blue_pmt": {"recorder": null}}

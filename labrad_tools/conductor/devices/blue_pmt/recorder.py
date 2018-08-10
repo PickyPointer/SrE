@@ -7,11 +7,16 @@ import numpy as np
 from conductor_device.conductor_parameter import ConductorParameter
 
 class Recorder(ConductorParameter):
-    priority = 2
-    data_dir = '/media/z/SrE/Data/{}/{}#{}/'
+    priority = 11
+    data_dir = '/home/yelab/GitRepo/SrE/labrad_tools/conductor/Data/{}/{}#{}/'
     #data_filename = 'test_pmt-{}.json'
     data_filename = '{}.blue_pmt'
-    pmt_sequences = ['lattice_sb_linescan']
+    pmt_sequences = [
+        'lattice_sb_linescan',
+        'sf_red_some_bs',
+        'lattice_pol_p_linescan',
+        'lattice_pol_m_linescan'
+        ]
     @inlineCallbacks
     def initialize(self):
         yield self.connect()

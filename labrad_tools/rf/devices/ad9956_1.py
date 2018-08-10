@@ -9,6 +9,6 @@ class Channel(AD9956):
     board_num = 1
     channel = 0
 
-    default_frequency = 30e6
+    default_frequency = 57.622e6 #Default clock aom frequency
 
 __device__ = Channel

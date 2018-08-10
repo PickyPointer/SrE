@@ -9,7 +9,7 @@ from conductor_device.conductor_parameter import ConductorParameter
 
 class NewRecorder(ConductorParameter):
     priority = 2
-    data_dir = '/media/z/SrE/Data/{}/{}#{}/'
+    data_dir = '/home/yelab/GitRepo/SrE/labrad_tools/Data/{}/{}#{}/'
     data_filename = '{}.conductor'
 
     @inlineCallbacks
