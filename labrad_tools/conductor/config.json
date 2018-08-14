@@ -1,12 +1,12 @@
 {
-    "data_directory": "/home/yelab/GitRepo/SrE/labrad_tools/conductor/.data/{}",
+    "data_directory": "/home/srgang/.data/{}",
     "parameters_directory": "./parameters/",
     "time_format": "%Y%m%d",
     "registry_directory": ["", "Servers", "conductor", "parameters"],
     "default_parameters": {
         "sequencer": {
             "sequence": {
-                "sequence_directory": "/media/z/SrE/Sequences/{}/",
+                "sequence_directory": "/home/srgang/J/sequences/{}/",
                 "default_sequence": "all_off",
                 "okfpga_servername": "yeelmo_okfpga",
                 "okfpga_devicename": "Ross_ttl"
@@ -20,10 +20,10 @@
 		    },
         "conductor_recorder": {
             "new_recorder": {
-				"data_dir": "/home/yelab/GitRepo/SrE/labrad_tools/conductor/Data/{}/{}#{}/"
+				"data_dir": "/home/srgang/J/data/{}/{}#{}/"
 				},
 		    "old_recorder": {
-				"local_data_dir": "/home/yelab/GitRepo/SrE/labrad_tools/conductor/.data/{}"
+				"local_data_dir": "/home/srgang/.data/{}"
 	        	}
 		    },
         "clock_aom": {

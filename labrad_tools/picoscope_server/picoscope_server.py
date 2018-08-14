@@ -23,7 +23,8 @@ import os
 from twisted.internet.defer import inlineCallbacks
 from twisted.internet.defer import  returnValue
 
-from picoscope import ps3000a, ps5000a
+#from picoscope import ps3000a, ps5000a
+from picoscope import ps3000a
 
 from server_tools.hardware_interface_server import HardwareInterfaceServer
 
@@ -42,28 +43,28 @@ class PicoscopeServer(HardwareInterfaceServer):
     def refresh_available_interfaces(self):
 
         ps = ps3000a.PS3000a(connect=False)
-        ps2 = ps5000a.PS5000a(connect=False)
+#        ps2 = ps5000a.PS5000a(connect=False)
         
         try:
             serial_numbers = ps.enumerateUnits()
         except:
             serial_numbers = []
-        try:
-            serial_numbers2 = serial_numbers + ps2.enumerateUnits()
-        except:
-            serial_numbers2 = []
+#        try:
+#            serial_numbers2 = serial_numbers + ps2.enumerateUnits()
+#        except:
+#            serial_numbers2 = []
         
         additions = set(serial_numbers) - set(self.interfaces.keys())
-        additions2 = set(serial_numbers2) - set(self.interfaces.keys())
+#        additions2 = set(serial_numbers2) - set(self.interfaces.keys())
         for sn in additions:
             inst = ps3000a.PS3000a(sn)
             self.interfaces[sn] = inst
-        for sn in additions2:
-            inst = ps5000a.PS5000a(sn)
-            self.interfaces[sn] = inst
+#        for sn in additions2:
+#            inst = ps5000a.PS5000a(sn)
+#            self.interfaces[sn] = inst
 
         ps.close()
-        ps2.close()
+#        ps2.close()
 
     @setting(3, channel='s', coupling='s', voltage_range='v', attenuation='i', enabled='b')
     def set_channel(self, c, channel, coupling, voltage_range, attenuation, enabled):

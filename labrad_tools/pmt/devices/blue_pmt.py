@@ -75,12 +75,12 @@ class BluePMT(Picoscope):
     @inlineCallbacks
     def record(self, data_path):
         self.recording_name = data_path
-        yield self.picoscope_server.run_block()
         callInThread(self.do_record_data, data_path)
 #        yield self.do_record_data(data_path)
     
     @inlineCallbacks
     def do_record_data(self, data_path):
+        yield self.picoscope_server.run_block()
         raw_data_json = yield self.picoscope_server.get_data(json.dumps(self.data_format), True)
         raw_data = json.loads(raw_data_json)["A"]
         raw_sums = {label: sum(raw_counts) for label, raw_counts in raw_data.items()}

@@ -21,7 +21,7 @@ def deepish_copy(org):
 
 class OldRecorder(ConductorParameter):
     priority = 1
-    local_data_dir = '/home/yelab/GitRepo/SrE/labrad_tools/.local-data/{}'
+    local_data_dir = '/home/srgang/SrE/labrad_tools/.local-data/{}'
     writing_data = False
     write_counts = 1
     current_count = 1    

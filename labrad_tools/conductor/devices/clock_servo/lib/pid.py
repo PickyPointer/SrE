@@ -135,6 +135,7 @@ class DitherPID(object):
 
     def tick(self, side, value):
         self.input_buffer[side].append(value)
+        print 'side', side
         if np.product([bool(v) for v in self.input_buffer.values()]):
             self.update_output()
         return self.output
@@ -144,6 +145,7 @@ class DitherPID(object):
         in_r = self.input_buffer['right'].pop()
 
         self.error = in_l - in_r - self.input_offset
+        print 'error', self.error
 
         b_0 = self.filter_coefficients['b_0']
         b_1 = self.filter_coefficients['b_1']

@@ -35,9 +35,9 @@ class MplCanvas(FigureCanvas):
 
 class PMTViewer(QtGui.QDialog):
     if sys.platform == "win32":
-        data_dir = 'Z:\\SrE\\Data\\'
+        data_dir = 'J:\\data\\'
     else:
-        data_dir = '/media/z/SrE/Data/'
+        data_dir = '/home/srgang/J/data/'
 
     def __init__(self, pmt_name, reactor, cxn=None):
         super(PMTViewer, self).__init__(None)
