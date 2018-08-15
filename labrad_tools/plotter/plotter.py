@@ -119,10 +119,12 @@ class PlotterServer(LabradServer):
         finally:
             self.is_plotting = False
             try:
+                plt.close(fig)
                 del fig
                 del sio
                 del figure_data
             except:
+                print "couldn't delete fig data"
                 pass
 
 __server__ = PlotterServer
