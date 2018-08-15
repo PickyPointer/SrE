@@ -5,7 +5,7 @@ from devices.ad9956.ad9956 import AD9956
 class Channel(AD9956):
     autostart = True
     serial_server_name = "yeelmo_serial"
-    serial_address = "/dev/ttyACM0"
+    serial_address = "/dev/ttyACM85332343432351F0E180"
     board_num = 1
     channel = 0
 
