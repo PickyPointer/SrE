@@ -14,7 +14,7 @@ if __name__ == '__main__':
     qt4reactor.install()
     from twisted.internet import reactor
     from current_control import MultipleCurrentControl
-    channels = ['3d', '2d', 'zs']
+    channels = ['zs', 'mot', 'tc', 'master']
     configs = [ControlConfig(channel) for channel in channels]
     widget = MultipleCurrentControl(configs, reactor)
     widget.show()
