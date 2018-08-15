@@ -15,7 +15,7 @@ class Sequence(ConductorParameter):
 
     auto_trigger = True
 #    auto_trigger = False
-    okfpga_servername = 'yecookiemonster_okfpga'
+    okfpga_servername = 'yeelmo_okfpga'
     okfpga_devicename = 'Ross_ttl'
 
     def __init__(self, config={}):
