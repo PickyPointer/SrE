@@ -1,11 +1,11 @@
 from devices.ldc80xx.ldc80xxSerial import Ldc80xxSerial
 
-class BlueZS(Ldc80xxSerial):
+class BlueMaster(Ldc80xxSerial):
     autostart = False
     serial_server_name = 'yeelmo_serial'
     serial_address = 'ttyUSBblue_controller'
 
-    pro8_slot = 6
+    pro8_slot = 7
     default_current = 0.1478
 
-__device__ = BlueZS
+__device__ = BlueMaster
