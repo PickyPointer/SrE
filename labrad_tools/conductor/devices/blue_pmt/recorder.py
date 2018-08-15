@@ -40,5 +40,4 @@ class Recorder(ConductorParameter):
             yield self.cxn.pmt.record(pt_path)
         else:
             print self.pmt_sequences
-            print sequence
             print 'pmt sequence not found'
