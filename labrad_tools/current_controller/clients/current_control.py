@@ -99,6 +99,7 @@ class CurrentControl(QtGui.QGroupBox):
  
     def receive_update(self, c, signal):
         signal = json.loads(signal)
+        print signal
         for name, d in signal.items():
             self.free = False
             if name == self.name:

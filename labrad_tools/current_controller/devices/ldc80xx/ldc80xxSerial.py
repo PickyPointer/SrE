@@ -15,6 +15,8 @@ class Ldc80xxSerial(Device):
     """
     serial_server_name = None
     serial_address = None
+    serial_baudrate = 19200
+    serial_timeout = 2.0
 
     pro8_slot = None
 
@@ -31,6 +33,10 @@ class Ldc80xxSerial(Device):
         yield self.connect_labrad()
         self.serial_server = yield self.cxn[self.serial_server_name]
         yield self.serial_server.select_interface(self.serial_address)
+        yield self.serial_server.disconnect()
+        yield self.serial_server.select_interface(self.serial_address)
+        yield self.serial_server.timeout(self.serial_timeout)
+        yield self.serial_server.baudrate(self.serial_baudrate)
         yield self.get_parameters()
     
     @inlineCallbacks
@@ -41,19 +47,26 @@ class Ldc80xxSerial(Device):
 
     @inlineCallbacks
     def write_to_slot(self, command):
-        slot_command = ':SLOT {};'.format(self.pro8_slot)
-        yield self.serial_server.write(slot_command + command)
+        slot_command = ':SLOT {}\n'.format(self.pro8_slot)
+        yield self.serial_server.write(slot_command)
+        yield self.serial_server.write(command)
     
     @inlineCallbacks
     def query_to_slot(self, command):
-        slot_command = ':SLOT {};'.format(self.pro8_slot)
-        ans = yield self.serial_server.query(slot_command + command)
+        slot_command = ':SLOT {}\n'.format(self.pro8_slot)
+        yield self.serial_server.write(slot_command)
+        yield self.serial_server.write(command)
+        ans = yield self.serial_server.read_line()
+        print ans
         returnValue(ans)
 
     @inlineCallbacks
     def get_current(self):
-        command = ':ILD:SET?'
-        ans = yield self.query_to_slot(command)
+        slot_command = ':SLOT {}\n'.format(self.pro8_slot)
+        yield self.serial_server.write(slot_command)
+        yield self.serial_server.write(':ILD:SET?\n')
+        ans = yield self.serial_server.read_line() 
+        print ans
         returnValue(float(ans[9:]))
 
     @inlineCallbacks
@@ -61,15 +74,16 @@ class Ldc80xxSerial(Device):
         min_current = self.current_range[0]
         max_current = self.current_range[1]
         current = sorted([min_current, current, max_current])[1]
-        command = ':ILD:SET {}'.format(current)
+        command = ':ILD:SET {}\n'.format(current)
         
         yield self.write_to_slot(command)
         self.power = yield self.get_power()
 
     @inlineCallbacks
     def get_power(self):
-        command = ':POPT:ACT?'
+        command = ':POPT:ACT?\n'
         ans = yield self.query_to_slot(command)
+        print ans
         returnValue(float(ans[10:]))
     
     @inlineCallbacks
@@ -78,7 +92,7 @@ class Ldc80xxSerial(Device):
 
     @inlineCallbacks
     def get_state(self):
-        command = ':LASER?'
+        command = ':LASER?\n'
         ans = yield self.query_to_slot(command)
         if ans == ':LASER ON':
             returnValue(True)
@@ -88,9 +102,9 @@ class Ldc80xxSerial(Device):
     @inlineCallbacks
     def set_state(self, state):
         if state:
-            command = ':LASER ON'
+            command = ':LASER ON\n'
         else:
-            command = ':LASER OFF'
+            command = ':LASER OFF\n'
         
         yield self.write_to_slot(command)
 
