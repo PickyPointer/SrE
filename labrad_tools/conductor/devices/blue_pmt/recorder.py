@@ -17,6 +17,7 @@ class Recorder(ConductorParameter):
         'lattice_pol_p_linescan',
         'lattice_pol_m_linescan',
         'lattice_pol_m_noClock',
+        'sf_red_some_test',
         ]
     @inlineCallbacks
     def initialize(self):
