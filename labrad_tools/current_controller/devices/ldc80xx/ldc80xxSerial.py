@@ -57,7 +57,6 @@ class Ldc80xxSerial(Device):
         yield self.serial_server.write(slot_command)
         yield self.serial_server.write(command)
         ans = yield self.serial_server.read_line()
-        print ans
         returnValue(ans)
 
     @inlineCallbacks
@@ -66,7 +65,6 @@ class Ldc80xxSerial(Device):
         yield self.serial_server.write(slot_command)
         yield self.serial_server.write(':ILD:SET?\n')
         ans = yield self.serial_server.read_line() 
-        print ans
         returnValue(float(ans[9:]))
 
     @inlineCallbacks
@@ -83,7 +81,6 @@ class Ldc80xxSerial(Device):
     def get_power(self):
         command = ':POPT:ACT?\n'
         ans = yield self.query_to_slot(command)
-        print ans
         returnValue(float(ans[10:]))
     
     @inlineCallbacks
