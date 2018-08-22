@@ -73,13 +73,14 @@ class BluePMT(Picoscope):
 
 
     @inlineCallbacks
-    def record(self, data_path):
+    def record(self, data_path, save_raw_data):
         self.recording_name = data_path
-        callInThread(self.do_record_data, data_path)
+        yield None
+        callInThread(self.do_record_data, data_path, save_raw_data)
 #        yield self.do_record_data(data_path)
     
     @inlineCallbacks
-    def do_record_data(self, data_path):
+    def do_record_data(self, data_path, save_raw_data):
         yield self.picoscope_server.run_block()
         raw_data_json = yield self.picoscope_server.get_data(json.dumps(self.data_format), True)
         raw_data = json.loads(raw_data_json)["A"]
@@ -117,24 +118,16 @@ class BluePMT(Picoscope):
         print "saving processed data to {}".format(data_path)
         ti = time.time()
         json_path = data_path + '.json'
-#        if os.path.exists(json_path):
-#            print 'not saving data to {}. file already exists'.format(json_path)
-#        else:
         with open(data_path + '.json', 'w') as outfile:
             json.dump(processed_data, outfile, default=lambda x: x.tolist())
-        
-        h5py_path = data_path + '.hdf5'
-#        if os.path.exists(h5py_path):
-#            print 'not saving data to {}. file already exists'.format(h5py_path)
-#        else:
-#        with h5py.File(h5py_path) as h5f:
-#            for k, v in raw_data.items():
-#                h5f.create_dataset(k, data=np.array(v), compression='gzip')
-        h5f = h5py.File(h5py_path, 'w')
-        for k, v in raw_data.items():
-            h5f.create_dataset(k, data=np.array(v), compression='gzip')
-        h5f.close()
-        print "save time = %f"%(time.time()-ti)
+       
+        if save_raw_data:
+            h5py_path = data_path + '.hdf5'
+            h5f = h5py.File(h5py_path, 'w')
+            for k, v in raw_data.items():
+                h5f.create_dataset(k, data=np.array(v), compression='gzip')
+            h5f.close()
+            print "save time = %f"%(time.time()-ti)
         
         """ temporairly store data """
         if len(self.record_names) > self.max_records:

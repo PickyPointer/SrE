@@ -29,10 +29,10 @@ class PMTServer(DeviceServer):
     update = Signal(UPDATE_ID, 'signal: update', 's')
     name = 'pmt'
 
-    @setting(11, record_name='s', returns='b')
-    def record(self, c, record_name):
+    @setting(11, record_name='s', save_raw_data='b', returns='b')
+    def record(self, c, record_name, save_raw_data=True):
         device = self.get_selected_device(c)
-        yield device.record(record_name)
+        yield device.record(record_name, save_raw_data)
         returnValue(True)
     
     @setting(12, record_name=['s', 'i'], returns='s')
@@ -42,5 +42,6 @@ class PMTServer(DeviceServer):
         returnValue(json.dumps(data))
 
 if __name__ == "__main__":
+    print '!!!'
     from labrad import util
     util.runServer(PMTServer())
