@@ -20,7 +20,7 @@
 		    },
         "conductor_recorder": {
             "new_recorder": {
-				"data_dir": "/home/srgang/J/data/{}/{}#{}/"
+				"data_dir": "/home/srgang/J/data/{}/scans/{}#{}/"
 				},
 		    "old_recorder": {
 				"local_data_dir": "/home/srgang/.data/{}"

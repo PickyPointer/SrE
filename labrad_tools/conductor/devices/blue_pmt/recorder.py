@@ -8,8 +8,7 @@ from conductor_device.conductor_parameter import ConductorParameter
 
 class Recorder(ConductorParameter):
     priority = 9
-    data_dir = '/home/srgang/J/data/{}/{}#{}/'
-    #data_filename = 'test_pmt-{}.json'
+    data_dir = '/home/srgang/J/data/{}/scans/{}#{}/'
     data_filename = '{}.blue_pmt'
     pmt_sequences = [
         'lattice_sb_linescan',
@@ -19,6 +18,8 @@ class Recorder(ConductorParameter):
         'lattice_pol_m_noClock',
         'sf_red_some_test',
         ]
+    save_raw_data = True
+
     @inlineCallbacks
     def initialize(self):
         yield self.connect()
@@ -38,7 +39,7 @@ class Recorder(ConductorParameter):
         
         sequence = self.conductor.parameters['sequencer']['sequence'].value
         if np.intersect1d(sequence, self.pmt_sequences):
-            yield self.cxn.pmt.record(pt_path)
+            yield self.cxn.pmt.record(pt_path, self.save_raw_data)
         else:
             print self.pmt_sequences
             print 'pmt sequence not found'
