@@ -37,25 +37,25 @@ class BluePMT(Picoscope):
     picoscope_channel_settings = {
         'A': {
             'coupling': 'DC',
-            'voltage_range': 10.0,
+            'voltage_range': 1.0,
             'attenuation': 1,
             'enabled': True,
             },
         'B': {
             'coupling': 'DC',
-            'voltage_range': 10.0,
+            'voltage_range': 1.0,
             'attenuation': 1,
             'enabled': False,
             },
         'C': {
             'coupling': 'DC',
-            'voltage_range': 10.0,
+            'voltage_range': 1.0,
             'attenuation': 1,
             'enabled': False,
             },
         'D': {
             'coupling': 'DC',
-            'voltage_range': 10.0,
+            'voltage_range': 1.0,
             'attenuation': 1,
             'enabled': False,
             },
