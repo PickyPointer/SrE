@@ -442,6 +442,7 @@ class SequencerControl(QtGui.QWidget):
 
 if __name__ == '__main__':
     a = QtGui.QApplication([])
+    a.setWindowIcon(QtGui.QIcon('icon.jpg'))
     import client_tools.qt4reactor as qt4reactor
     qt4reactor.install()
     from twisted.internet import reactor

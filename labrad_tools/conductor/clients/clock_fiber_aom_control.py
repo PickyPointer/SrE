@@ -10,6 +10,7 @@ sys.path.append('../../client_tools')
 from connection import connection
 from widgets import NeatSpinBox
 
+
 class ParameterRow(QtGui.QWidget):
     def __init__(self, configuration):
         QtGui.QDialog.__init__(self)
@@ -23,6 +24,7 @@ class ParameterRow(QtGui.QWidget):
     def populateGUI(self):
         self.nameBox = QtGui.QLineEdit()
         self.nameBox.setFixedSize(self.boxWidth, self.boxHeight)
+        self.nameBox.setText("hr_demod_frequency")
         self.valueBox = NeatSpinBox()
         self.valueBox.setFixedSize(self.boxWidth, self.boxHeight)
 #        self.valueBox.display(0)
@@ -69,7 +71,7 @@ class ParameterControl(QtGui.QGroupBox):
         yield None
 
     def populateGUI(self):
-        self.parameterRows = [ParameterRow(self.configuration) 
+        self.parameterRows = [ParameterRow(self.configuration,) 
                 for i in range(self.numRows)]
 
         self.layout = QtGui.QVBoxLayout()
@@ -144,12 +146,13 @@ class ControlConfig(object):
         self.boxHeight = 40
         self.hpad = 25
         self.vpad = 25
-        self.numRows = 2
+        self.numRows = 1
         self.device = 'clock_fiber_aom'
 
 if __name__ == '__main__':
     import sys
     a = QtGui.QApplication([])
+    a.setWindowIcon(QtGui.QIcon('icon.jpeg'))
     import qt4reactor
     qt4reactor.install()
     from twisted.internet import reactor
