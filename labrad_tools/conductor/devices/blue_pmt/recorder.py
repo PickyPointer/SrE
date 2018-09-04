@@ -19,6 +19,7 @@ class Recorder(ConductorParameter):
         'sf_red_some_test',
         'lattice_mF_scan',
 	'lattice_mF_scan_v2',
+	'lattice_mF_cleanout_pulse',
         ]
     save_raw_data = True
 
