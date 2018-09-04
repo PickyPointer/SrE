@@ -14,7 +14,7 @@ class SG382(Device):
     def initialize(self):
         self.vxi11 = vxi11.Instrument(self.vxi11_address)
         self.do_update_parameters()
-        self.set_frequency(default_frequency)
+        self.set_frequency(self.default_frequency)
 
     def do_update_parameters(self):
         self.frequency = self.get_frequency()
