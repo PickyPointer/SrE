@@ -7,12 +7,14 @@ class SG382(Device):
     
     frequency = None
     frequency_range = (1e-6, 30e6)
+    default_frequency = 1e6
 
     update_parameters = ['frequency']
     
     def initialize(self):
         self.vxi11 = vxi11.Instrument(self.vxi11_address)
         self.do_update_parameters()
+        self.set_frequency(default_frequency)
 
     def do_update_parameters(self):
         self.frequency = self.get_frequency()
