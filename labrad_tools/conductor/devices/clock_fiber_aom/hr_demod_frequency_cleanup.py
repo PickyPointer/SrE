@@ -17,4 +17,4 @@ class HrDemodFrequencyCleanup(ConductorParameter):
     @inlineCallbacks
     def update(self):
         if self.value is not None:
-            yield self.cxn.rf.frequency(value)
+            yield self.cxn.rf.frequency(self.value)
