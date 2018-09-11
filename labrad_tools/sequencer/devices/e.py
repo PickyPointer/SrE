@@ -5,7 +5,7 @@ from devices.yesr_analog_board.lib.analog_channel import AnalogChannel
 
 class BoardE(YeSrAnalogBoard):
     okfpga_server_name = 'yeelmo_okfpga'
-    okfpga_device_id = 'srq loaner'
+    okfpga_device_id = 'Ross_DAC_1'
 
     bitfile = 'analog_sequencer-v2b.bit'
 #    bitfile = 'analog_sequencer.bit'
