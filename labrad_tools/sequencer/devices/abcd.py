@@ -50,7 +50,7 @@ class BoardABCD(YeSrDigitalBoard):
         DigitalChannel(loc=['C', 5], name='Cooling RF switch', mode='auto', manual_output=False, invert=False),
         DigitalChannel(loc=['C', 6], name='Repump AOM', mode='auto', manual_output=False, invert=False),
         DigitalChannel(loc=['C', 7], name='Lattice Ramp Trig', mode='auto', manual_output=False, invert=False),
-        DigitalChannel(loc=['C', 8], name='FNC ramp TTL', mode='auto', manual_output=False, invert=False),
+        DigitalChannel(loc=['C', 8], name='DAC Trigger', mode='auto', manual_output=False, invert=False),
         DigitalChannel(loc=['C', 9], name='Clock servo switch', mode='auto', manual_output=False, invert=False),
         DigitalChannel(loc=['C', 10], name='Picoscope trig', mode='auto', manual_output=False, invert=False),
         DigitalChannel(loc=['C', 11], name='Ag FSK trigger', mode='auto', manual_output=False, invert=False),
