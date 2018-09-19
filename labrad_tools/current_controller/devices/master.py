@@ -1,9 +1,8 @@
-from devices.ldc80xx.ldc80xxSerial import Ldc80xxSerial
+from devices.ldc80xx.ldc80xxVXI11 import Ldc80xxVXI11
 
-class BlueMaster(Ldc80xxSerial):
+class BlueMaster(Ldc80xxVXI11):
     autostart = False
-    serial_server_name = 'yeelmo_serial'
-    serial_address = '/dev/ttyUSBblue_controller'
+    vxi11_address = 'TCPIP::192.168.1.15::gpib0,10::INSTR'
 
     pro8_slot = 7
     default_current = 0.1478
