@@ -40,12 +40,12 @@ class Ldc80xxVXI11(Device):
     def query_to_slot(self, command):
         slot_command = ':SLOT {};'.format(self.pro8_slot)
         ans = self.inst.ask(slot_command + command)
-        returnValue(ans)
+        return ans
 
     def get_current(self):
         command = ':ILD:SET?'
         ans = self.query_to_slot(command)
-        returnValue(float(ans[9:]))
+        return float(ans[9:])
 
     def set_current(self, current):
         min_current = self.current_range[0]
@@ -59,18 +59,18 @@ class Ldc80xxVXI11(Device):
     def get_power(self):
         command = ':POPT:ACT?'
         ans = self.query_to_slot(command)
-        returnValue(float(ans[10:]))
+        return float(ans[10:])
     
     def set_power(self, power):
          return None
 
     def get_state(self):
         command = ':LASER?'
-        ans = yield self.query_to_slot(command)
+        ans = self.query_to_slot(command)
         if ans == ':LASER ON':
-            returnValue(True)
+            return True
         elif ans == ':LASER OFF':
-            returnValue(False)
+            return False
 
     def set_state(self, state):
         if state:
