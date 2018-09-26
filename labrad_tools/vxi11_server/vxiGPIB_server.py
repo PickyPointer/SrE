@@ -1,10 +1,10 @@
 """
 ### BEGIN NODE INFO
 [info]
-name = vxi11
+name = vxigpib
 version = 1
 description = none
-instancename = %LABRADNODE%_vxi11
+instancename = %LABRADNODE%_vxigpib
 
 [startup]
 cmdline = %PYTHON% %FILE%
@@ -18,28 +18,32 @@ timeout = 20
 import sys
 import vxi11
 
+#List of ip addresses corresponding to ICS 9065 hubs
+from GPIBHubList import hubList 
+
 from labrad.server import LabradServer, setting
-from GPIBHubList import hubList
 
 sys.path.append('../')
 from server_tools.hardware_interface_server import HardwareInterfaceServer
 
 
-class VXI11Server(HardwareInterfaceServer):
-    """ Provides access to vxi specified ethernet connected hardware.
-    
-    this server can be used to access vxi11 enabled devices on the in-lab network 
-    when the client is itself not on the in-lab network.
+class VXIGPIBServer(HardwareInterfaceServer):
+    """ Provides access to GPIB hardware through ICS 9065 GPIB-Ethernet Hub.
+    The ICS 9065 has a vxi11 interface which converts commands to IEEE 488.2.
     """
-    name = '%LABRADNODE%_vxi11'
+    name = '%LABRADNODE%_vxigpib'
 
     def refresh_available_interfaces(self):
-        """ fill self.interfaces with available connections """
-	    all_addresses = vxi11.list_devices('192.168.1.255')
-        #Remove addresses corresponding to gpib-ethernet hubs
-        #Those are handled by the vxiGPIB server
-        addresses = [a for a in all_addresses if not a in hubList.keys()]
-        for address in addresses:
+        """ fill self.interfaces with gpib devices connected to gpib-ethernet hubs """
+        #Get all vxi11 devices on the sesame st network
+        all_addresses = vxi11.list_devices('192.168.1.255') 
+        #Get all ips of currently connected gpib-ethernet hubs
+        hub_addresses = [a for a in all_addresses if a in hubList.keys()]
+        #Get list of GPIB resources connected to active gpib-ethernet hubs
+        gpib_addresses = []
+        for address in hub_addresses:
+            gpib_addresses = gpib_addresses + vxi11.list_resources(address)
+        for address in gpib_addresses:
             self.interfaces[address] = vxi11.Instrument(address)
 
     @setting(3, data='s', returns='')
@@ -69,4 +73,4 @@ class VXI11Server(HardwareInterfaceServer):
 
 if __name__ == '__main__':
     from labrad import util
-    util.runServer(VXI11Server())
+    util.runServer(VXIGPIBServer())

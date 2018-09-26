@@ -5,7 +5,7 @@ from devices.yesr_analog_board.lib.analog_channel import AnalogChannel
 
 class BoardE(YeSrAnalogBoard):
     okfpga_server_name = 'yeelmo_okfpga'
-    okfpga_device_id = 'srq loaner'
+    okfpga_device_id = 'Ross_DAC_1'
 
     bitfile = 'analog_sequencer-v2b.bit'
 #    bitfile = 'analog_sequencer.bit'
@@ -13,14 +13,14 @@ class BoardE(YeSrAnalogBoard):
     autostart = True
 
     channels = [
-        AnalogChannel(loc=0, name='Alpha Intensity', mode='auto', manual_output=0.0),
-        AnalogChannel(loc=1, name='Beta Intensity', mode='auto', manual_output=0.0),
-        AnalogChannel(loc=2, name='X Comp. Coil', mode='auto', manual_output=0.0),
-        AnalogChannel(loc=3, name='Y Comp. Coil', mode='auto', manual_output=0.0),
-        AnalogChannel(loc=4, name='Z Comp. Coil', mode='auto', manual_output=0.0),
-        AnalogChannel(loc=5, name='MOT Coil', mode='auto', manual_output=0.0),
-        AnalogChannel(loc=6, name='HODT Intensity', mode='auto', manual_output=0.0),
-        AnalogChannel(loc=7, name='VODT Intensity', mode='auto', manual_output=0.0),
+        AnalogChannel(loc=0, name='MOT Ramp', mode='auto', manual_output=0.0),
+        AnalogChannel(loc=1, name='H2 Bias', mode='auto', manual_output=0.0),
+        AnalogChannel(loc=2, name='Lattice Ramp', mode='auto', manual_output=0.0),
+        AnalogChannel(loc=3, name='DC Stark A', mode='auto', manual_output=0.0),
+        AnalogChannel(loc=4, name='DC Stark B', mode='auto', manual_output=0.0),
+        AnalogChannel(loc=5, name='DC Stark C', mode='auto', manual_output=0.0),
+        AnalogChannel(loc=6, name='DC Stark D', mode='auto', manual_output=0.0),
+        AnalogChannel(loc=7, name='Zeeman Intensity', mode='auto', manual_output=0.0),
         ]
 
 

@@ -17,6 +17,9 @@ class Recorder(ConductorParameter):
         'lattice_pol_m_linescan',
         'lattice_pol_m_noClock',
         'sf_red_some_test',
+        'lattice_mF_scan',
+        'co_pulse_plus',
+        'co_pulse_minus'
         ]
     save_raw_data = True
 
