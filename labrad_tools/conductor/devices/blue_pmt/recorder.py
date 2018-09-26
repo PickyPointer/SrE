@@ -12,15 +12,16 @@ class Recorder(ConductorParameter):
     data_filename = '{}.blue_pmt'
     pmt_sequences = [
         'lattice_sb_linescan',
-	'lattice_sb_linescan_v2',
+	    'lattice_sb_linescan_v2',
         'sf_red_some_bs',
         'lattice_pol_p_linescan',
         'lattice_pol_m_linescan',
         'lattice_pol_m_noClock',
         'sf_red_some_test',
         'lattice_mF_scan',
-	'lattice_mF_scan_v2',
-	'lattice_mF_cleanout_pulse',
+	    'lattice_mF_scan_v2',
+        'co_pulse_plus',
+        'co_pulse_minus'
         ]
     save_raw_data = True
 
