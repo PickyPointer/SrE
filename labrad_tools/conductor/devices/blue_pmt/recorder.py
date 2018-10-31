@@ -19,7 +19,10 @@ class Recorder(ConductorParameter):
         'sf_red_some_test',
         'lattice_mF_scan',
         'co_pulse_plus',
-        'co_pulse_minus'
+        'co_pulse_minus',
+	'lattice_pol_mF_scan',
+	'ramsey_pol_p',
+	'ramsey_pol_m',
         ]
     save_raw_data = True
 

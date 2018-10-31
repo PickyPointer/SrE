@@ -2,13 +2,13 @@ from devices.yesr_analog_board.yesr_analog_board import YeSrAnalogBoard
 from devices.yesr_analog_board.lib.analog_channel import AnalogChannel
 
 class BoardF(YeSrAnalogBoard):
-    okfpga_server_name = 'yesr20_okfpga'
-    okfpga_device_id = 'srq analog 2'
+    okfpga_server_name = 'yeelmo_okfpga'
+    okfpga_device_id = 'Ross_DAC_2'
 
-    autostart = False
+    autostart = True
 
     channels = [
-        AnalogChannel(loc=0, name='Beta FM', mode='auto', manual_output=0.0),
+        AnalogChannel(loc=0, name='H2 Bias 2', mode='auto', manual_output=0.0),
         AnalogChannel(loc=1, name='813 H1 Intensity', mode='auto', manual_output=0.0),
         AnalogChannel(loc=2, name='813 H2 Intensity', mode='auto', manual_output=0.0),
         AnalogChannel(loc=3, name='813 V Intensity', mode='auto', manual_output=0.0),
